@@ -1,7 +1,7 @@
 // swift-tools-version:6.2
 import PackageDescription
 let package = Package(
-  name: "OpenCombineJS",
+  name: "OpenCombineJS-Swift-6.2",
   platforms: [
     .macOS("26.0")
   ],
@@ -10,8 +10,8 @@ let package = Package(
     .library(name: "OpenCombineJS", targets: ["OpenCombineJS"]),
   ],
   dependencies: [
-    .package(url: "https://github.com/swiftwasm/JavaScriptKit.git", from: "0.13.0"),
-    .package(url: "https://github.com/OpenCombine/OpenCombine.git", from: "0.13.0"),
+    .package(path: "../JavaScriptKit-Swift-6.2"),
+    .package(path: "../OpenCombine-Swift-6.2"),
   ],
   targets: [
     .executableTarget(
@@ -23,7 +23,8 @@ let package = Package(
     .target(
       name: "OpenCombineJS",
       dependencies: [
-        "JavaScriptKit", "OpenCombine",
+        .product(name: "JavaScriptKit", package: "JavaScriptKit-Swift-6.2"),
+        .product(name: "OpenCombine", package: "OpenCombine-Swift-6.2"),
       ]
     ),
   ]
